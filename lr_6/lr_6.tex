@@ -1,0 +1,62 @@
+\documentclass[14pt, a4paper]{extarticle}
+
+\input{../preamble_main}
+
+\begin{document}
+	\onehalfspacing
+	\include{title_page}
+	\setcounter{page}{2}
+	
+	\section*{Задание}
+	
+	Дан асимптотически устойчивый объект управления:
+	$$\begin{cases}
+		\dot{x} = Ax + bu, x(0),\\
+		y = Cx,
+	\end{cases}$$
+	где $x$ -- недоступный прямому измерению вектор состояния, $u, y$ -- входной и выходной сигналы объекта, доступные прямым измерениям,
+	$$\begin{matrix}
+		A=\left[\begin{matrix}
+			-a_{n-1} & 1 & \cdots & 0 \\
+			-a_{n-1} & 0 & \cdots & 0 \\
+			\vdots & \vdots & \ddots & 1 \\
+			-a_0 & 0 & \cdots & 0 \\
+		\end{matrix}\right], & b=\left[\begin{matrix}
+			0 \\ \vdots \\ 0 \\ b_m \\ \vdots \\ b_0 \\
+		\end{matrix}\right], & C=\left[\begin{matrix}
+			1 & 0 & \cdots & 0
+		\end{matrix}\right],
+	\end{matrix}$$
+	$a_i,i=\overline{0,n-1},b_j,j=\overline{0,m}$ -- неизвестные коэффициенты модели.
+	
+	Рассматриваемая задача состоит в построении оценки вектора состояния $\hat{x}$ такой, что:
+	$$\lim\limits_{t\to\infty}\left|\left|x(t)-\hat{x}(t)\right|\right|=0$$
+	
+	Синтезируемый адаптивный наблюдатель должен одновременно оценивать неизвестные параметры объекта управления $\theta$ и генерировать оценку вектора состояния $\hat{x}$.
+
+	\begin{enumerate}
+		\item На основе результатов, полученных в работе~№5, промоделировать адаптивный наблюдатель вектора состояния объекта. Коэффициент адаптации $\gamma$ выбрать экспериментальным путем. Построить два графика моделирования. На первом отобразить норму разности: $$\left|\left|x-\hat{x}\right|\right|=\sqrt{(x-\hat{x})^T(x-\hat{x})}$$ На втором графике -- параметрические ошибки $\tilde{\theta}$;
+		\item Повторить эксперимент при $u=10sint+5cos2t+4cos4t+3cos8t$;
+		\item По результатам моделирования сделать выводы.
+ 	\end{enumerate}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Вариант & $a_1$ & $a_0$ & $b_1$ & $b_0$ & $k_1$ & $k_0$ & Сигнал \\\hline
+			18 & 3 & 4 & 3 & 6 & $2\sqrt{2}$ & 4 & $u = sint+0,5cos2t$ \\\hline
+		\end{tabular}
+	\end{table}
+	
+	\newpage
+	
+	\section*{Описание работы}
+	
+	
+	
+	\newpage
+	
+	\section*{Вывод}
+	
+
+\end{document}
