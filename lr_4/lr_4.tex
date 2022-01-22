@@ -58,7 +58,29 @@
 	\section*{Описание работы}
 	
 	\begin{enumerate}
-		\item 
+		\item Построенные в пакете \textit{Simulink} модели замкнутых систем управления с законом нелинейного робастного управления и законом адаптивного и робастного управления соответственно представлены на рисунках \ref{fig:2-system} и \ref{fig:3-system}, а также на рисунке \ref{fig:2-properties}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-system}
+			\caption{Система с нелиненым законом робастного управления}
+			\label{fig:2-system}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-system}
+			\caption{Система с законом адаптивного и робастного управления}
+			\label{fig:3-system}
+		\end{figure}
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics{2-properties}
+			\caption{Параметры системы}
+			\label{fig:2-properties}
+		\end{figure}
+		
 		\item Примем $\gamma=100$ и промоделируем систему с законом нелинейного робастного управления при отсутствии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:2-1-x}, \ref{fig:2-1-e}.
 		
 		\begin{figure}[H]
@@ -155,13 +177,156 @@
 			\label{fig:2-6-e}
 		\end{figure}
 		
+		\item Примем $\sigma=0,1$ и промоделируем систему с законом адаптивного и робастного управления при $\gamma=100$ и отсутствии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-1-x}-\ref{fig:3-1-theta}.
 		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-x}
+			\caption{Векторы $x$ и $x_M$ при $\gamma=100$ и отсутствии $\delta(t)$}
+			\label{fig:3-1-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-e}
+			\caption{Вектор $e$ при $\gamma=100$ и отсутствии $\delta(t)$}
+			\label{fig:3-1-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\gamma=100$ и отсутствии $\delta(t)$}
+			\label{fig:3-1-theta}
+		\end{figure}
+		
+		Теперь промоделируем при наличии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-2-x}-\ref{fig:3-2-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-x}
+			\caption{Векторы $x$ и $x_M$ при $\gamma=100$ и наличии $\delta(t)$}
+			\label{fig:3-2-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-e}
+			\caption{Вектор $e$ при $\gamma=100$ и наличии $\delta(t)$}
+			\label{fig:3-2-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\gamma=100$ и наличии $\delta(t)$}
+			\label{fig:3-2-theta}
+		\end{figure}
+		
+		Не изменяя значение $\sigma$, примем $\gamma=1000$ и промоделируем систему при отсутствии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-3-x}-\ref{fig:3-3-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-x}
+			\caption{Векторы $x$ и $x_M$ при $\gamma=1000$ и отсутствии $\delta(t)$}
+			\label{fig:3-3-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-e}
+			\caption{Вектор $e$ при $\gamma=1000$ и отсутствии $\delta(t)$}
+			\label{fig:3-3-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\gamma=1000$ и отсутствии $\delta(t)$}
+			\label{fig:3-3-theta}
+		\end{figure}
+		
+		Теперь промоделируем при наличии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-4-x}-\ref{fig:3-4-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-4-x}
+			\caption{Векторы $x$ и $x_M$ при $\gamma=1000$ и наличии $\delta(t)$}
+			\label{fig:3-4-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-4-e}
+			\caption{Вектор $e$ при $\gamma=1000$ и наличии $\delta(t)$}
+			\label{fig:3-4-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-4-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\gamma=1000$ и наличии $\delta(t)$}
+			\label{fig:3-4-theta}
+		\end{figure}
+		
+		Теперь уменьшим параметр $\sigma=0,01$ и промоделируем систему при $\gamma=100$ и отсутствии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-5-x}-\ref{fig:3-5-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-5-x}
+			\caption{Векторы $x$ и $x_M$ при $\sigma=0,01$ и отсутствии $\delta(t)$}
+			\label{fig:3-5-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-5-e}
+			\caption{Вектор $e$ при $\sigma=0,01$ и отсутствии $\delta(t)$}
+			\label{fig:3-5-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-5-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\sigma=0,01$ и отсутствии $\delta(t)$}
+			\label{fig:3-5-theta}
+		\end{figure}
+		
+		Теперь промоделируем при наличии возмущения $\delta(t)$. Полученные графики представлены на рисунках \ref{fig:3-6-x}-\ref{fig:3-6-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-6-x}
+			\caption{Векторы $x$ и $x_M$ при $\sigma=0,01$ и наличии $\delta(t)$}
+			\label{fig:3-6-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-6-e}
+			\caption{Вектор $e$ при $\sigma=0,01$ и наличии $\delta(t)$}
+			\label{fig:3-6-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-6-theta}
+			\caption{Вектор $\tilde{\theta}$ при $\sigma=0,01$ и наличии $\delta(t)$}
+			\label{fig:3-6-theta}
+		\end{figure}
 		
 	\end{enumerate}
 
 	\newpage
 	
 	\section*{Вывод}
+	
+	Во время выполнения работы была доказана ограниченность всех сигналов.
+	
+	Также было показано, что при увеличении коэффициента $\gamma$ уменьшается радиус окрестности вектора ошибки $e$.
+	
+	А при снижении параметра $\sigma$ можно уменьшить радиус окрестности векторов ошибки $e$ и $\tilde{\theta}$.
+	
 	
 
 \end{document}
