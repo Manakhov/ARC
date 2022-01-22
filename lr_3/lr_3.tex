@@ -87,11 +87,284 @@
 	
 	\section*{Описание работы}
 	
-	
+	\begin{enumerate}
+		\item Сформируем эталонную модель на основе заданных в таблице значений времени переходного процесса $t_\text{п}$ и максимального перерегулирования $\bar{\sigma}$. В качестве стандартного характеристического полинома будем использовать полином Баттерворта. 
+		
+		На рисунке \ref{fig:1-xm} представлен график переходной функции эталонной модели.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{1-xm}
+			\caption{Переходная функция эталонной модели}
+			\label{fig:1-xm}
+		\end{figure}
+		
+		\item На основе предположения, что параметры объекта известны, промоделируем систему управления с регулятором:
+		$$u=\theta^Tx+\frac{1}{\kappa}g$$
+		где $\theta^T=\left[\begin{matrix}
+			\theta_1, & \theta_2
+		\end{matrix}\right]$ -- вектор неизвестных параметров, определяемый параметрическими рассогласованиями между матрицами $A$ и $A_M$,
+		$$\theta_1=\frac{-a_{M0}+a_0}{b_0}, \theta_2=\frac{-a_{M1}+a_1}{b_0}, \kappa=\frac{b_0}{a_{M0}}$$
+		
+		Полученная система представлена на рисунках \ref{fig:2-system}-\ref{fig:2-properties}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-system}
+			\caption{Система управления при известных параметрах объекта}
+			\label{fig:2-system}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics{2-properties}
+			\caption{Параметры системы}
+			\label{fig:2-properties}
+		\end{figure}
+		
+		Полученные графики представлены на рисунках \ref{fig:2-1-x}, \ref{fig:2-1-e}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-1-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ }
+			\label{fig:2-1-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-1-e}
+			\caption{Вектор ошибки управления $e$}
+			\label{fig:2-1-e}
+		\end{figure}
+		
+		Теперь отклоним параметры объекта следующим образом:
+		$$A=\left[
+		\begin{matrix}
+			0 & 1 \\
+			-a_0+50 & -a_1+50 
+		\end{matrix}
+		\right]$$
+		
+		При этом система не потеряла устойчивость. Полученные графики представлены на рисунках \ref{fig:2-2-x}, \ref{fig:2-2-e}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-2-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при незначительном отклонении параметров объекта}
+			\label{fig:2-2-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-2-e}
+			\caption{Вектор ошибки управления $e$ при незначительном отклонении параметров объекта}
+			\label{fig:2-2-e}
+		\end{figure}
+		
+		Теперь отклоним параметры объекта следующим образом:
+		$$A=\left[
+		\begin{matrix}
+			0 & 1 \\
+			-a_0+100 & -a_1+100 
+		\end{matrix}
+		\right]$$
+		
+		При этом система потеряла устойчивость. Полученные графики представлены на рисунках \ref{fig:2-2-x}, \ref{fig:2-2-e}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-3-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при значительном отклонении параметров объекта}
+			\label{fig:2-3-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-3-e}
+			\caption{Вектор ошибки управления $e$ при значительном отклонении параметров объекта}
+			\label{fig:2-3-e}
+		\end{figure}
+		
+		\item Теперь проведем моделирование адаптивной системы управления со следующими регулятором и алгоритмом адаптации:
+		$$\begin{matrix}
+			u=\hat{\theta}^Tx+\frac{1}{\kappa}g, & \dot{\hat{\theta}}=\gamma x b^TPe, & \hat{\theta}(0)=0
+		\end{matrix}$$
+		
+		Полученная система представлена на рисунке \ref{fig:3-system}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-system}
+			\caption{Адаптивная система управления}
+			\label{fig:3-system}
+		\end{figure}
+		
+		Повторим три эксперимента п.п.~2 при $\gamma=100$. Полученные графики без отклонения параметров объекта представлены на рисунках \ref{fig:3-1-1-x}-\ref{fig:3-1-1-theta}. 
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-1-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$}
+			\label{fig:3-1-1-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-1-e}
+			\caption{Вектор ошибки управления $e$}
+			\label{fig:3-1-1-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-1-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$}
+			\label{fig:3-1-1-theta}
+		\end{figure}
+		
+		Теперь отклоним параметры объекта следующим образом:
+		$$A=\left[
+		\begin{matrix}
+			0 & 1 \\
+			-a_0+50 & -a_1+50 
+		\end{matrix}
+		\right]$$
+		
+		Полученные графики представлены на рисунках \ref{fig:3-1-2-x}-\ref{fig:3-1-2-theta}. 
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-2-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при незначительном отклонении параметров объекта}
+			\label{fig:3-1-2-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-2-e}
+			\caption{Вектор ошибки управления $e$ при незначительном отклонении параметров объекта}
+			\label{fig:3-1-2-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-2-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$ при незначительном отклонении параметров объекта}
+			\label{fig:3-1-2-theta}
+		\end{figure}
+		
+		Теперь отклоним параметры объекта следующим образом:
+		$$A=\left[
+		\begin{matrix}
+			0 & 1 \\
+			-a_0+100 & -a_1+100 
+		\end{matrix}
+		\right]$$
+		
+		Полученные графики представлены на рисунках \ref{fig:3-1-3-x}-\ref{fig:3-1-3-theta}. 
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-3-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при значительном отклонении параметров объекта}
+			\label{fig:3-1-3-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-3-e}
+			\caption{Вектор ошибки управления $e$ при значительном отклонении параметров объекта}
+			\label{fig:3-1-3-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-1-3-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$ при значительном отклонении параметров объекта}
+			\label{fig:3-1-3-theta}
+		\end{figure}
+		
+		Теперь выберем $\gamma=1000$. Полученные графики представлены на рисунках \ref{fig:3-2-1-x}-\ref{fig:3-2-1-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-1-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при $\gamma=1000$}
+			\label{fig:3-2-1-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-1-e}
+			\caption{Вектор ошибки управления $e$ при $\gamma=1000$}
+			\label{fig:3-2-1-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-1-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$ при $\gamma=1000$}
+			\label{fig:3-2-1-theta}
+		\end{figure}
+		
+		Теперь выберем $\gamma=200$. Полученные графики представлены на рисунках \ref{fig:3-2-2-x}-\ref{fig:3-2-2-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-2-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при $\gamma=200$}
+			\label{fig:3-2-2-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-2-e}
+			\caption{Вектор ошибки управления $e$ при $\gamma=200$}
+			\label{fig:3-2-2-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-2-2-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$ при $\gamma=200$}
+			\label{fig:3-2-2-theta}
+		\end{figure}
+		
+		Вернем $\gamma=100$ и проведем моделирование при $g(t)=1$. Полученные графики представлены на рисунках \ref{fig:3-3-x}-\ref{fig:3-3-theta}. 
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-x}
+			\caption{Вектора состояния модели $x$ и эталонной модели $x_M$ при $g(t)=1$}
+			\label{fig:3-3-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-e}
+			\caption{Вектор ошибки управления $e$ при $g(t)=1$}
+			\label{fig:3-3-e}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{3-3-theta}
+			\caption{Вектор параметрических ошибок $\tilde{\theta}$ при $g(t)=1$}
+			\label{fig:3-3-theta}
+		\end{figure}
+		
+	\end{enumerate}
 	
 	\newpage
 	
 	\section*{Вывод}
 	
-
+	При моделировании адаптивной системы управления была представлена ограниченность всех сигналов в замкнутой системе даже при изменении параметров объекта управления.
+	
+	Также при любом $\gamma$ можно наблюдать асимптотическое стремление ошибки $e$ к нулю. При увеличении $\gamma$ увеличивается скорость сходимости параметрических ошибок $\tilde{\theta}$ к нулю.
+	
+	Также было показано, что для экспоненциального стремления вектора $\hat{\theta}$ к $\theta$ необходимо наличие не менее $(n+1)/2$ гармоник в сигнале $g(t)$.
+	
+	
 \end{document}
