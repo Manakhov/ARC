@@ -52,11 +52,70 @@
 	
 	\section*{Описание работы}
 	
-	
+	\begin{enumerate}
+		\item Полученная модель состоит из настраиваемой модели:
+		$$\hat{y}=\hat{\theta}^T\omega,$$
+		алгоритма адаптации:
+		$$\dot{\hat{\theta}}=\gamma\omega\varepsilon$$
+		и алгоритма оценивания вектора состояния:
+		$$\hat{x}=\sum_{i=0}^{n-1}\hat{\theta}_{i+1}\left(sI-A_0\right)^{-1} e_{n-1}\left[y\right] + \sum_{j=0}^{m}\hat{\theta}_{j+1+n}\left(sI-A_0\right)^{-1} e_{m-j}\left[u\right]$$
+		
+		Построенная в пакете \textit{Simulink} модель системы представлена на рисунках \ref{fig:1-system}, \ref{fig:1-properties}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=1\textwidth]{1-system}
+			\caption{Система с адаптивным наблюдателем}
+			\label{fig:1-system}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics{1-properties}
+			\caption{Параметры системы}
+			\label{fig:1-properties}
+		\end{figure}
+		
+		Полученные графики при управляющем сигнале $u=sint+0,5cos2t$ представлены на рисунках \ref{fig:1-x}, \ref{fig:1-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{1-x}
+			\caption{Ошибка наблюдения вектора состояния $\left|\left|x-\hat{x}\right|\right|$}
+			\label{fig:1-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{1-theta}
+			\caption{Параметрические ошибки $\tilde{\theta}$}
+			\label{fig:1-theta}
+		\end{figure}
+		
+		\item Полученные графики при управляющем сигнале $u=10sint+5cos2t + 4cos4t+3cos8t$ представлены на рисунках \ref{fig:2-x}, \ref{fig:2-theta}.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-x}
+			\caption{Ошибка наблюдения вектора состояния $\left|\left|x-\hat{x}\right|\right|$}
+			\label{fig:2-x}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.59\textwidth]{2-theta}
+			\caption{Параметрические ошибки $\tilde{\theta}$}
+			\label{fig:2-theta}
+		\end{figure}
+		
+	\end{enumerate}
 	
 	\newpage
 	
 	\section*{Вывод}
 	
-
+	Полученный адаптивный наблюдатель обеспечивает выполнение целевого условия при выполнении условия неисчезающего возбуждения. Проблемой является большое время оценивания.
+	
+	Также при увеличении числа гармоник управляющего сигнала время оценивания резко возрастает.
+	
 \end{document}
